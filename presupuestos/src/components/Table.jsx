@@ -17,7 +17,7 @@ const Table = () => {
   }
     
   return (
-    <div className='w-1/2 mx-auto p-5 bg-blue-400'>
+    <div className='w-1/2 mx-auto p-5 pb-10 bg-blue-400 rounded-lg'>
         <div className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem] text-center">
             <span className="flex-1 p-1 text-white font-bold text-xl" type="text">Producto</span>
             <span className="w-[8rem] p-1 text-white font-bold text-xl" type="number">Cantidad</span>

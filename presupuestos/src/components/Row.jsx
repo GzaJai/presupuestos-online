@@ -27,10 +27,10 @@ const Row = ({ addRow }) => {
 
   return (
     <div className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem]">
-        <input className="flex-1 p-1" type="text" placeholder="Producto" onChange={handleOnChange}/>
-        <input ref={inputRefQ} className="w-[8rem] p-1" type="number" placeholder="Cantidad" onChange={handleTotal}/>
-        <input ref={inputRefP} className="w-[8rem] p-1" type="number" placeholder="Precio unitario" onChange={handleTotal}/>
-        <span className="w-[8rem] p-1 bg-white" type="number" placeholder="Total" disabled>{total}</span>
+        <input className="flex-1 p-1 rounded" type="text" placeholder="Producto" onChange={handleOnChange}/>
+        <input ref={inputRefQ} className="w-[8rem] p-1 rounded" type="number" placeholder="Cantidad" onChange={handleTotal}/>
+        <input ref={inputRefP} className="w-[8rem] p-1 rounded" type="number" placeholder="Precio unitario" onChange={handleTotal}/>
+        <span className="w-[8rem] p-1 bg-white rounded" type="number" placeholder="Total" disabled>{total}</span>
     </div>
   )
 }
