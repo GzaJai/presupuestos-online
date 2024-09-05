@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
-function Printable( { children } ) {
+function BugdetPrinter( { children } ) {
     const contentRef = useRef(null);
 
     const handleDownloadPdf = () => {
@@ -44,4 +44,4 @@ function Printable( { children } ) {
     );
 }
 
-export default Printable;
+export default BugdetPrinter;

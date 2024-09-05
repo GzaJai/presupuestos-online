@@ -3,13 +3,13 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import Header from './layout/Header.jsx'
 import './index.css'
-import Printable from './components/Printable.jsx'
+import BugdetPrinter from './components/BugdetPrinter.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Printable>
+    <BugdetPrinter>
       <Header/>
       <App />
-    </Printable>
+    </BugdetPrinter>
   </StrictMode>,
 )
