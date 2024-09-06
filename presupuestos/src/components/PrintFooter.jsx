@@ -4,7 +4,7 @@ const PrintFooter = () => {
 
   const handleImageError = (e) => {
     e.target.onerror = null; // Prevenir un bucle infinito si la segunda imagen también falla
-    e.target.src = 'https://raw.githubusercontent.com/GzaJai/presupuestos-online/main/presupuestos/public/portfolio-qr.png'; // Ruta en línea de la imagen de respaldo
+    e.target.src = 'https://drive.google.com/file/d/1vO0hvVgMzQAGSUmoUpmg2qjJFCVUkEiS/view?usp=sharing'; // Ruta en línea de la imagen de respaldo
   };
 
   return (
