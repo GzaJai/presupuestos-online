@@ -13,7 +13,7 @@ function BugdetPrinter() {
 
     return (
         <div className='w-100 flex flex-col'>
-            <div className='self-center flex flex-col'>
+            <div className='self-center flex flex-col py-6'>
                 <button 
                 className='bg-orange-500 mt-10 p-3 rounded-lg text-white font-bold hover:bg-blue-600 hover:duration-150 '
                 onClick={handleIsReady}>
