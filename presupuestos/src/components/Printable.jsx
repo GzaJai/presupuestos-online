@@ -11,7 +11,7 @@ const Printable = ({ show }) => {
       <div>
         <div className='flex py-10 items-center gap-[2rem]'>
           <h3 className=' text-2xl font-bold'>Presupuesto Libreria Silver</h3>
-          <img src="https://github.com/GzaJai/presupuestos-online/blob/main/presupuestos/public/Imagen1.png" alt="" />
+          <img src="https://raw.githubusercontent.com/GzaJai/presupuestos-online/main/presupuestos/public/Imagen1.png" alt="" />
         </div>
         <div className='flex items-center justify-around gap-[2rem]'>
           <h4 className='text-lg font-semibold pb-5'>Fecha: {getShortDate()}</h4>
