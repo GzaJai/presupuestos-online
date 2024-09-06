@@ -50,7 +50,8 @@ const Table = ({ done }) => {
           key={row.id}
           rowId={row.id}
           addRow={addRow} 
-          removeRow={() => removeRow(row.id)} 
+          removeRow={() => removeRow(row.id)}
+          done= {done}
         />
       ))}
     </div>
