@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Table from './Table'
-import { getShortDate, getExpireDate } from '../utils/getTime'
+import { getShortDate, getExpireDate } from '../utils/timeUtils'
 
 
 const Printable = ({ show }) => {
