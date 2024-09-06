@@ -1,7 +1,7 @@
 import { useRef, useState } from "react"
 import '../../../presupuestos/src/index.css'
 
-const Row = ({ rowId, addRow, done, removeRow}) => {
+const Row = ({ rowId, addRow, done, removeRow, getTableTotal }) => {
 
     const [isFilled, setIsFilled] = useState(false)
     const [total, setTotal] = useState('')
@@ -24,6 +24,7 @@ const Row = ({ rowId, addRow, done, removeRow}) => {
         const price = inputRefP.current.value
 
         setTotal(price*quantity)
+        getTableTotal(rowId, price*quantity)
     }
 
     const handleClear = () => {

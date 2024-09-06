@@ -4,6 +4,9 @@ import Row from './Row';
 const Table = ({ done }) => {
   const [rowsQ, setRowsQ] = useState(1);
   const [rows, setRows] = useState([{ id: 1 }]);
+  const [rowsValues, setRowsValues] = useState([])
+  const [total, setTotal] = useState(0)
+
   const initialDone = useRef(done);
 
   const addRow = () => {
@@ -15,6 +18,22 @@ const Table = ({ done }) => {
     if(rowId!=1){
       setRows(prevRows => prevRows.filter((row) => row.id !== rowId));
     }
+  };
+
+  const getTotal = (rowId, rowTotal) => {
+    console.log(rowsValues);
+  
+    const rowIndex = rowsValues.findIndex(r => r.id === rowId);
+  
+    if (rowIndex !== -1) {
+      rowsValues[rowIndex].value = rowTotal;
+    } else {
+      rowsValues.push({ 'id': rowId, 'value': rowTotal });
+    }
+
+    let totalSum = rowsValues.reduce((sum, row) => sum + row.value, 0);
+  
+    setTotal(totalSum)
   };
 
   useEffect(() => {
@@ -51,9 +70,14 @@ const Table = ({ done }) => {
           rowId={row.id}
           addRow={addRow} 
           removeRow={() => removeRow(row.id)}
-          done= {done}
+          done={done}
+          getTableTotal={getTotal}
         />
       ))}
+      <div className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem] text-center">
+        <span className="flex-1 p-3 text-white font-bold text-2xl">Total Presupuesto</span>
+        <span className="w-[8rem] p-3 text-xl font-bold bg-white rounded">{total!=0?'$'+total:''}</span>
+      </div>
     </div>
   );
 };
