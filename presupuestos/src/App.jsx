@@ -1,11 +1,11 @@
-import Table from "./components/Table"
+import BugdetPrinter from './components/BugdetPrinter.jsx'
 
 function App() {
   
 
   return (
     <>
-      <Table/>
+      <BugdetPrinter />
     </>
   )
 }
