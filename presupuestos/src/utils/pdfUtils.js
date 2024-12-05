@@ -1,6 +1,6 @@
 import { PDFDocument } from 'pdf-lib';
-import domtoimage from 'dom-to-image';
 import { getDate } from './timeUtils';
+import { saveAs } from 'file-saver';
 
 const getPdfName = () => {
     const date = getDate().toString();
@@ -8,42 +8,26 @@ const getPdfName = () => {
     return name;
 };
 
-export const downloadPdf = async (contentRef) => {
-    if (contentRef.current) {
-        try {
-            const dataUrl = await domtoimage.toPng(contentRef.current);
-            const pdfDoc = await PDFDocument.create();
-            const page = pdfDoc.addPage([210 * 2.83, 295 * 2.83]);
-            const img = await pdfDoc.embedPng(dataUrl);
-            const imgWidth = img.width;
-            const imgHeight = img.height;
-            const pageWidth = page.getWidth();
-            const pageHeight = page.getHeight();
 
-            const scaledWidth = pageWidth;
-            let scale = scaledWidth / imgWidth;
-            const scaleFactor = 1.2;
-            scale *= scaleFactor;
-            const scaledHeight = imgHeight * scale;
-            const xOffset = (pageWidth - (imgWidth * scale)) / 2;
-            const marginTop = 20;
-            const yOffset = pageHeight - scaledHeight - marginTop;
+export async function fillForm() {
 
-            page.drawImage(img, {
-                x: xOffset,
-                y: yOffset,
-                width: imgWidth * scale,
-                height: scaledHeight,
-            });
+    const templateUrl = '../../template-prueba.pdf'
+    const existingPdfBytes = await fetch(templateUrl)
+    .then((res)=>res.arrayBuffer());
+    
+    const tempatePdf = await PDFDocument.load(existingPdfBytes);
+    
+    const pdfForm = tempatePdf.getForm();
+    
+    const nameField = pdfForm.getTextField('Text1')
+    const dateField = pdfForm.getTextField('Text2')
+    
+    nameField.setText('Libreria Silver')
+    dateField.setText('04-12-24')
+    
+    const pdfBytes = await tempatePdf.save();
 
-            const pdfBytes = await pdfDoc.save();
-            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = getPdfName() + '.pdf';
-            link.click();
-        } catch (error) {
-            console.error('Error generating PDF:', error);
-        }
-    }
-};
+    const blob = new Blob([pdfBytes], { type: "application/pdf" });
+    saveAs(blob, 'queseyo.pdf')
+
+}

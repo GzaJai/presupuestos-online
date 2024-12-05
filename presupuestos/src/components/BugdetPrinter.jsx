@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import Printable from './Printable';
-import { downloadPdf } from '../utils/pdfUtils';
+import { fillForm } from '../utils/pdfUtils';
 import PrintFooter from './PrintFooter';
 
 function BugdetPrinter() {
@@ -22,7 +22,7 @@ function BugdetPrinter() {
                 {isReady&&
                 <button 
                 className='bg-green-600 self-center mt-10 p-3 rounded-lg text-white font-bold hover:bg-blue-600 hover:duration-150 '
-                onClick={()=>downloadPdf(contentRef)}>
+                onClick={()=>fillForm()}>
                     Descargar Presupuesto
                 </button>}
             </div>
