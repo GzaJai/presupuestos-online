@@ -1,5 +1,5 @@
 import { PDFDocument } from 'pdf-lib';
-import { getDate } from './timeUtils';
+import { getDate, getShortDate, getExpireDate } from './timeUtils';
 import { saveAs } from 'file-saver';
 
 const getPdfName = () => {
@@ -38,8 +38,8 @@ export async function fillForm(rows, total, clientData) {
     pdfForm.getTextField('business-name').setText("Libreria Silver");
     pdfForm.getTextField('big-business-name').setText("Libreria Silver");
     pdfForm.getTextField('budget-number').setText(String(1));
-    pdfForm.getTextField('issued-date').setText('06-12-24');
-    pdfForm.getTextField('expiration-date').setText('16-12-24');
+    pdfForm.getTextField('issued-date').setText(getShortDate());
+    pdfForm.getTextField('expiration-date').setText(getExpireDate(10));
     pdfForm.getTextField('seller-cuit').setText(String(27255869774));
     pdfForm.getTextField('business-address').setText('Polonio Montenegro 17');
     pdfForm.getTextField('client-cuit').setText(String(clientData.cuit));
