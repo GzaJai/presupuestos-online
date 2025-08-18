@@ -37,15 +37,15 @@ const Row = ({ rowId, saveRow, removeRow, getTableTotal }) => {
 
   return (
     <div 
-    className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem]"
+    className="w-full mx-auto flex gap-[.2rem] py-[.1rem]"
     >
-        <span className="w-[2rem] text-center p-2 rounded bg-white">{rowId+1}</span>
+        <span className="w-[3rem] text-center p-2 rounded bg-white">{rowId+1}</span>
         <input ref={inputRefProduct} className="input-center flex-1 p-2 rounded" type="text" placeholder="Producto" onChange={handleOnChange} />
         <input ref={inputRefQuantity} className="input-center w-[8rem] p-2 rounded" type="number" placeholder="Cantidad" onChange={handleOnChange}/>
-        <input ref={inputRefPrice} className="input-center w-[8rem] p-2 rounded" type="number" placeholder="Precio unitario" onChange={handleOnChange}/>
-        <span className="w-[8rem] p-2 bg-white rounded" type="number" disabled>{total!=0?'$'+total:''}</span>
+        <input ref={inputRefPrice} className="input-center w-[8.5rem] p-2 rounded" type="number" placeholder="Precio unitario" onChange={handleOnChange}/>
+        <span className="w-[8.5rem] p-2 bg-white rounded" type="number" disabled>{total!=0?'$'+total:''}</span>
 
-        <span className="w-[2rem] bg-red-600 text-white text-2xl font-bold text-center rounded-xl" onClick={removeRow}>X</span>
+        <span className="w-[2.5rem] bg-red-600 text-white text-2xl font-bold text-center rounded-xl" onClick={removeRow}>X</span>
     </div>
   )
 }
