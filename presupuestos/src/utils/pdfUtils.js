@@ -40,8 +40,8 @@ export async function fillForm(rows, total, clientData) {
     pdfForm.getTextField('budget-number').setText(String(1));
     pdfForm.getTextField('issued-date').setText('06-12-24');
     pdfForm.getTextField('expiration-date').setText('16-12-24');
-    pdfForm.getTextField('seller-cuit').setText(String(202020));
-    pdfForm.getTextField('business-address').setText('Mi casa');
+    pdfForm.getTextField('seller-cuit').setText(String(20123456781));
+    pdfForm.getTextField('business-address').setText('Old Street 123, Mendoza, Argentina');
     pdfForm.getTextField('client-cuit').setText(String(clientData.cuit));
     pdfForm.getTextField('client-name').setText(clientData.name);
     pdfForm.getTextField('iva-condition').setText(clientData.iva);
