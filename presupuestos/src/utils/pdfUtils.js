@@ -14,7 +14,7 @@ const getPdfName = () => {
 
 export async function fillForm(rows, total, clientData) {
 
-    const templateUrl = '../../template-presupuesto-form.pdf'
+    const templateUrl = '../../new-template-form.pdf'
     const existingPdfBytes = await fetch(templateUrl)
     .then((res)=>res.arrayBuffer());
     
