@@ -5,8 +5,16 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        museo: ['MuseoModerno', 'sans-serif'],
+      },
+        colors: {
+        yui: '#FF3838', // le das un nombre personalizado
+      },
+    },
   },
   plugins: [],
 }
+
 
