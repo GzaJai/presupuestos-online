@@ -38,16 +38,16 @@ const Table = ({ rows, rowsSetter, total, totalSetter }) => {
   return (
     <>
       <div className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem] text-center">
-        <span className="flex-1 p-1 text-white font-bold text-xl">
+        <span className="flex-1 p-1 text-white font-bold text-lg">
           Producto
         </span>
-        <span className="w-[8rem] p-1 text-white font-bold text-xl">
+        <span className="w-[8rem] p-1 text-white font-bold text-lg">
           Cantidad
         </span>
-        <span className="w-[8rem] p-1 text-white font-bold text-xl">
+        <span className="w-[8rem] p-1 text-white font-bold text-lg">
           Precio
         </span>
-        <span className="w-[8rem] p-1 text-white font-bold text-xl">Total</span>
+        <span className="w-[8rem] p-1 text-white font-bold text-lg">Total</span>
       </div>
 
       {rows.map((row) =>(
@@ -61,14 +61,14 @@ const Table = ({ rows, rowsSetter, total, totalSetter }) => {
       ))}
       <div className="flex justify-center p-6">
         <button
-          className="bg-green-600 p-3 rounded-lg text-white font-bold hover:bg-blue-600 hover:duration-150"
+          className="btn-custom-confirm p-[.75rem]"
           onClick={addRow}
           >
           Agregar fila
         </button>
       </div>
-      <div className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem] text-center">
-        <span className="flex-1 p-3 text-white font-bold text-2xl">
+      <div className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem] text-center justify-end">
+        <span className="p-3 text-white font-bold text-2xl">
           Total Presupuesto
         </span>
         <span className="w-[8rem] p-3 text-xl font-bold bg-white rounded">
