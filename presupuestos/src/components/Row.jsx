@@ -43,7 +43,7 @@ const Row = ({ rowId, saveRow, removeRow, getTableTotal }) => {
         <input ref={inputRefPrice} className="h-[2rem] w-[8.5rem] text-center no-spin p-2 rounded" type="number" placeholder="Precio unitario" onChange={handleOnChange}/>
         <span className="h-[2rem] w-[8.5rem] text-center p-2 bg-white rounded" type="number" disabled>{total!=0?'$'+total:''}</span>
 
-        <span className="h-[2rem] w-[2rem] my-auto p-1 bg-yui text-white text-xl font-bold text-center rounded-xl hover:curso" onClick={removeRow}>X</span>
+        <span className="h-[2rem] w-[2rem] my-auto p-1 bg-yui text-white text-xl font-bold text-center rounded-xl hover:cursor-pointer" onClick={removeRow}>X</span>
     </div>
   )
 }
