@@ -37,6 +37,7 @@ const Table = ({ rows, rowsSetter, total, totalSetter }) => {
 
   return (
     <>
+      <p className="text-white text-xl font-medium pb-4">Ingrese los productos del presupuesto</p>
       <div className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem] text-center">
         <span className="flex-1 p-1 text-white font-bold text-lg">
           Producto
