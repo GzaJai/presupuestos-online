@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         museo: ['MuseoModerno', 'sans-serif'],
+        mukta: ['Mukta', 'sans-serif']
       },
         colors: {
         yui: '#FF3838', // le das un nombre personalizado
