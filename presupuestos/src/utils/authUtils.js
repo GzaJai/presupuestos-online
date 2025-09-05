@@ -11,10 +11,11 @@ export const login = async (username, password) => {
     try {
         const res = await api.post("auth/login", {username, password});
         console.log(res.data);
+        return true
     } catch (err) {
         console.error(err.response?.data || err.message);
-        
     }
+    return false
 }
 
 export const logout = async () => {
