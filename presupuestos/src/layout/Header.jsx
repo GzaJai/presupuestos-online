@@ -18,7 +18,7 @@ const Header = ({ pageTitle }) => {
   }
 
   return (
-    <div className='flex mx-auto text-center bg-yui justify-between items-center mb-[2rem]'>
+    <div className='flex mx-auto text-center bg-yui-900 justify-between items-center mb-[2rem]'>
       <img src="../../public/isologo-bnw-removebg.png" className='w-auto h-[4rem] ml-[2rem] hover:cursor-pointer' alt="YUI ONE logo" onClick={() => navigate("/")} />
       <div>
         <h1 className='text-white font-museo font-semibold text-3xl'>{ pageTitle }</h1>

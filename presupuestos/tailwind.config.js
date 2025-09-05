@@ -11,7 +11,11 @@ export default {
         mukta: ['Mukta', 'sans-serif']
       },
         colors: {
-        yui: '#FF3838',
+        yui: {
+          900: '#FF3838',
+          600: '#FF8383',
+          300: '#FFD0D0'
+        },
         custom: {
           gray: 'rgba(92, 114, 128, 0.6)',
           darkgray: 'rgba(60, 60, 60, 0.8)'

@@ -34,7 +34,7 @@ const NavMenu = ({ logoutHandler }) => {
         <ul className="p-4 space-y-4">
           <li><a href="/" className="text-custom-darkgray">Inicio</a></li>
           <li><a href="/profile" className="text-custom-darkgray">Profile</a></li>
-          <li className="mt-[10rem]"><p onClick={() => logoutHandler()} className="text-yui hover:cursor-pointer">Cerrar Sesión</p></li>
+          <li className="mt-[10rem]"><p onClick={() => logoutHandler()} className="text-yui-900 hover:cursor-pointer">Cerrar Sesión</p></li>
         </ul>
       </div>
     </div>
