@@ -11,7 +11,11 @@ export default {
         mukta: ['Mukta', 'sans-serif']
       },
         colors: {
-        yui: '#FF3838', // le das un nombre personalizado
+        yui: '#FF3838',
+        custom: {
+          gray: 'rgba(92, 114, 128, 0.6)',
+          darkgray: 'rgba(60, 60, 60, 0.8)'
+        }
       },
        boxShadow: {
         'custom-external-blur': '0 0 80px -15px rgba(0,0,0,0.25)',
@@ -19,7 +23,36 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+        function({ addComponents }) {
+      addComponents({
+        '.btn-custom-confirm': {
+          backgroundColor: '#16a34a',         
+          marginBottom: '2.5rem',     
+          borderRadius: '0.5rem',     
+          color: '#ffffff',           
+          fontWeight: '700',              
+          transitionDuration: '150ms',
+          '&:hover': {
+            backgroundColor: '#2563eb',
+          },
+        },
+        '.no-spin': {
+          '&::-webkit-inner-spin-button': {
+            '-webkit-appearance': 'none',
+            margin: '0',
+          },
+          '&::-webkit-outer-spin-button': {
+            '-webkit-appearance': 'none',
+            margin: '0',
+          },
+          '&': {
+            '-moz-appearance': 'textfield', // Firefox
+          },
+        },
+      })
+    }
+  ],
 }
 
 
