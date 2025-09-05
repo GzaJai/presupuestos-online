@@ -37,18 +37,18 @@ const Table = ({ rows, rowsSetter, total, totalSetter }) => {
 
   return (
     <>
-      <p className="text-white text-xl font-medium pb-4">Ingrese los productos del presupuesto</p>
+      <p className="text-xl font-medium pb-4">Ingrese los productos del presupuesto</p>
       <div className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem] text-center">
-        <span className="flex-1 p-1 text-white font-bold text-lg">
+        <span className="flex-1 p-1 font-bold text-lg">
           Producto
         </span>
-        <span className="w-[8rem] p-1 text-white font-bold text-lg">
+        <span className="w-[8rem] p-1 font-bold text-lg">
           Cantidad
         </span>
-        <span className="w-[8rem] p-1 text-white font-bold text-lg">
+        <span className="w-[8rem] p-1 font-bold text-lg">
           Precio
         </span>
-        <span className="w-[8rem] p-1 text-white font-bold text-lg">Total</span>
+        <span className="w-[8rem] p-1 font-bold text-lg">Total</span>
       </div>
 
       {rows.map((row) =>(
@@ -69,10 +69,10 @@ const Table = ({ rows, rowsSetter, total, totalSetter }) => {
         </button>
       </div>
       <div className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem] text-center justify-end">
-        <span className="p-3 text-white font-bold text-2xl">
+        <span className="p-3  font-bold text-2xl">
           Total Presupuesto
         </span>
-        <span className="w-[8rem] p-3 text-xl font-bold bg-white rounded">
+        <span className="w-[8rem] p-3 text-xl font-bold shadow-custom-internal-blur rounded">
           {total != 0 ? "$" + total : ""}
         </span>
       </div>
