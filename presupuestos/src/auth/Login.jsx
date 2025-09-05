@@ -39,7 +39,7 @@ const Login = ({ loginSetter, showLoggedIn }) => {
         <div className='py-1 pb-3'>
             <p ref={loginErrorMessage} className='font-mukta font-black text-yui hidden'>¡La cuenta o la contraseña no coindicen!</p>
         </div>
-        <button onClick={handleLogin} className='mt-5 p-2 w-[10rem] bg-yui rounded-lg font-bold font-museo text-xl text-white hover:text-black hover:duration-150 cursor-pointer'>
+        <button onClick={handleLogin} className='mt-5 p-2 w-[10rem] bg-yui-900 rounded-lg font-bold font-museo text-xl text-white hover:text-black hover:duration-150 cursor-pointer'>
             Ingresar
         </button>
     </div>
