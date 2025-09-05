@@ -17,12 +17,11 @@ export const login = async (username, password) => {
     }
 }
 
-export const logout = async (username, password) => {
+export const logout = async () => {
     try {
         const res = await api.post("auth/logout");
         console.log(res.data);
     } catch (err) {
         console.error(err.response?.data || err.message);
-        
     }
 }
