@@ -1,23 +1,15 @@
 import { useState } from "react";
-import { logout } from "../utils/authUtils";
-
-import React from 'react'
 
 const NavMenu = ({ logoutHandler }) => {
   const [open, setOpen] = useState(false);
 
-  const handleLogout = () => {
-    logout()
-
-  }
-
   return (
     <div>
-          <svg  xmlns="http://www.w3.org/2000/svg" onClick={() => setOpen(true)}
+        <svg  xmlns="http://www.w3.org/2000/svg" onClick={() => setOpen(true)}
           fill="#FFFFFF" viewBox="0 0 24 24" className='w-[2.5rem] h-auto mr-[2rem] hover:cursor-pointer'>
           {/* <!--Boxicons v3.0 https://boxicons.com | License  https://docs.boxicons.com/free--> */}
           <path d="M4 6h16v2H4zM4 11h16v2H4zM4 16h16v2H4z"></path>
-          </svg>
+        </svg>
 
       {open && (
         <div
