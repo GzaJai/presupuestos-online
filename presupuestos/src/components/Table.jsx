@@ -72,7 +72,7 @@ const Table = ({ rows, rowsSetter, total, totalSetter }) => {
         <span className="p-3  font-bold text-2xl">
           Total Presupuesto
         </span>
-        <span className="w-[8rem] p-3 text-xl font-bold shadow-custom-internal-blur rounded">
+        <span className="w-[8rem] p-3 text-xl font-bold border-[1.2px] border-custom-gray rounded">
           {total != 0 ? "$" + total : ""}
         </span>
       </div>
