@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
 
 const NavMenu = ({ logoutHandler }) => {
   const [open, setOpen] = useState(false);
+
+  const handleLinkPressed = () => {
+    setOpen(false)
+  }
 
   return (
     <div>
@@ -31,11 +36,12 @@ const NavMenu = ({ logoutHandler }) => {
             <path d="m7.76 14.83-2.83 2.83 1.41 1.41 2.83-2.83 2.12-2.12.71-.71.71.71 1.41 1.42 3.54 3.53 1.41-1.41-3.53-3.54-1.42-1.41-.71-.71 5.66-5.66-1.41-1.41L12 10.59 6.34 4.93 4.93 6.34 10.59 12l-.71.71z"></path>
         </svg>
         </div>
-        <ul className="p-4 space-y-4">
-          <li><a href="/" className="text-custom-darkgray">Inicio</a></li>
-          <li><a href="/profile" className="text-custom-darkgray">Profile</a></li>
-          <li className="mt-[10rem]"><p onClick={() => logoutHandler()} className="text-yui-900 hover:cursor-pointer">Cerrar Sesión</p></li>
-        </ul>
+        <nav className="flex flex-col p-4 space-y-4">
+          <Link onClick={handleLinkPressed} to="/" className="text-custom-darkgray">Inicio</Link>
+          <Link onClick={handleLinkPressed} to="/new-budget" className="text-custom-darkgray">Presupuestos</Link>
+          <Link onClick={handleLinkPressed} to="/new-client" className="text-custom-darkgray">Clientes</Link>
+          <span className="mt-[10rem]"><p onClick={() => logoutHandler()} className="text-yui-900 hover:cursor-pointer">Cerrar Sesión</p></span>
+        </nav>
       </div>
     </div>
   );
