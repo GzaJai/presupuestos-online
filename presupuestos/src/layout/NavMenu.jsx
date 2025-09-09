@@ -38,7 +38,7 @@ const NavMenu = ({ logoutHandler }) => {
         </div>
         <nav className="flex flex-col p-4 space-y-4">
           <Link onClick={handleLinkPressed} to="/" className="text-custom-darkgray">Inicio</Link>
-          <Link onClick={handleLinkPressed} to="/new-budget" className="text-custom-darkgray">Presupuestos</Link>
+          <Link onClick={handleLinkPressed} to="/budgets" className="text-custom-darkgray">Presupuestos</Link>
           <Link onClick={handleLinkPressed} to="/clients" className="text-custom-darkgray">Clientes</Link>
           <span className="mt-[10rem]"><p onClick={() => logoutHandler()} className="text-yui-900 hover:cursor-pointer">Cerrar Sesión</p></span>
         </nav>
