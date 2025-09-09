@@ -6,10 +6,10 @@ import App from "../App";
 import Loading from "../components/Loading";
 import Header from "../layout/Header";
 import Register from "../components/Register";
-import ClientInfoForm from "../components/ClientInfoForm";
 import AppLayout from "../layout/AppLayout";
 import HomeMenu from "../layout/HomeMenu";
 import ListClients from "../clients/ListClients";
+import NewClient from "../clients/NewClient";
 
 const Root = () => {
   const [loading, setLoading] = useState(true);
@@ -42,7 +42,7 @@ const Root = () => {
           <Route index element={<HomeMenu />} />
           <Route path="new-budget" element={<App />} />
           <Route path="clients" element={<ListClients />}/>
-          <Route path="new-client" element={<ClientInfoForm />} />
+          <Route path="new-client" element={<NewClient />} />
 
         </Route>
         <Route path="/login" element={<Login />} />
