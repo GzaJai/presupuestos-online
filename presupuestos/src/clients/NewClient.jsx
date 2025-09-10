@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import ClientInfoForm from '../components/ClientInfoForm'
-import { api } from '../utils/authUtils'
+import ClientInfoForm from './ClientInfoForm'
+import { api } from '../utils/apiUtils'
 import { toast, Toaster } from 'sonner'
-import { HttpStatusCode } from 'axios'
 
 const NewClient = () => {
   const [clientData, setClientData] = useState()

@@ -1,9 +1,7 @@
 import { useState } from "react"
 import Table from "./components/Table"
-import ClientInfoForm from "./components/ClientInfoForm"
+import ClientInfoForm from "./clients/ClientInfoForm"
 import { fillForm } from "./utils/pdfUtils";
-import Header from "./layout/Header";
-import { Outlet } from "react-router-dom";
 
 function App() {
   const [rows, setRows] = useState([{id: 0}]);
