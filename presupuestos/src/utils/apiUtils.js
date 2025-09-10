@@ -26,3 +26,21 @@ export const logout = async () => {
         console.error(err.response?.data || err.message);
     }
 }
+
+export const getBudget = async () => {
+    try {
+        const res = await api.get("budget/get/1");
+        console.log(res.data);
+    } catch (err) {
+        console.error(err.response?.data || err.message);
+    }
+}
+
+export const getClientNameById = async (clientId) => {
+    try {
+        const res = await api.get("client/get/" + clientId);
+        return res.data.name
+    } catch (err) {
+        console.error(err.response?.data || err.message);
+    }
+}
