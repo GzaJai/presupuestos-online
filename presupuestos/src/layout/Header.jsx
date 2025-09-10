@@ -1,5 +1,5 @@
 import React from 'react'
-import { logout } from '../utils/authUtils'
+import { logout } from '../utils/apiUtils'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import NavMenu from './NavMenu';
