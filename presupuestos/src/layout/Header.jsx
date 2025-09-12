@@ -1,36 +1,60 @@
-import React from 'react'
-import { logout } from '../utils/apiUtils'
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
-import NavMenu from './NavMenu';
+import React from "react";
+import { logout } from "../utils/apiUtils";
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import NavMenu from "./NavMenu";
 
 const Header = ({ pageTitle }) => {
   const navigate = useNavigate();
-  const [navMenuOpen, setNavMenuOpen] = useState(false);
+  const location = useLocation();
+  
 
   const handleLogoutBtn = () => {
-    logout()
-    navigate("/login")
-  }
+    logout();
+    navigate("/login");
+  };
 
-  const handleOpenNavMenu = () => {
-    setNavMenuOpen(!navMenuOpen)
-  }
+  const handlePrevPage = () => {
+    navigate(-1);
+  };
 
   return (
-    <div className='flex mx-auto text-center bg-yui-900 justify-between items-center mb-[2rem]'>
-      <img src="../../public/isologo-bnw-removebg.png" className='w-auto h-[4rem] ml-[2rem] hover:cursor-pointer' alt="YUI ONE logo" onClick={() => navigate("/")} />
+    <div className="flex mx-auto text-center bg-yui-900 justify-between items-center mb-[2rem]">
+      <img
+        src="../../public/isologo-bnw-removebg.png"
+        className="w-auto h-[4rem] ml-[2rem] hover:cursor-pointer"
+        alt="YUI ONE logo"
+        onClick={() => navigate("/")}
+      />
       <div>
-        <h1 className='text-white font-museo font-semibold text-3xl'>{ pageTitle }</h1>
+        <h1 className="text-white font-museo font-semibold text-3xl">
+          {pageTitle}
+        </h1>
       </div>
       <div>
-        <div className='px-[1rem]'>
+        <div className="px-[1rem]">
           <NavMenu logoutHandler={handleLogoutBtn} />
         </div>
-        <i ></i>
+        {location.pathname != "/" &&
+          <button
+          className="absolute top-20 left-4 bg-yui-600 text-white p-1 rounded shadow"
+          onClick={handlePrevPage}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="2rem"
+              height="2rem"
+              fill="#FFFFFF"
+              viewBox="0 0 24 24"
+              >
+              {/* <!--Boxicons v3.0 https://boxicons.com | License  https://docs.boxicons.com/free--> */}
+              <path d="M14.29 6.29 8.59 12l5.7 5.71 1.42-1.42-4.3-4.29 4.3-4.29z"></path>
+            </svg>
+          </button>
+        }
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
