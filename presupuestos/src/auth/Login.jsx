@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { login } from '../utils/authUtils'
+import { login } from '../utils/apiUtils'
 import { useNavigate } from 'react-router-dom'
 
 const Login = ({ loginSetter, showLoggedIn }) => {
