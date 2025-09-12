@@ -8,7 +8,7 @@ import Header from "../layout/Header";
 import Register from "../components/Register";
 import AppLayout from "../layout/AppLayout";
 import HomeMenu from "../layout/HomeMenu";
-import ListClients from "../clients/ListClients";
+import ClientsView from "../clients/ClientsView";
 import NewClient from "../clients/NewClient";
 import NewBudget from "../budgets/NewBudget";
 import BudgetMainView from "../budgets/BudgetMainView";
@@ -50,7 +50,7 @@ const Root = () => {
 
 
           {/* clients routes */}
-          <Route path="clients" element={<ListClients />}/>
+          <Route path="clients" element={<ClientsView />}/>
           <Route path="new-client" element={<NewClient />} />
           <Route path="client-details" element={<ClientDetails />} />
 
