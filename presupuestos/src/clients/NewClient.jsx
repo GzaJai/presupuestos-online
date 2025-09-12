@@ -5,17 +5,18 @@ import { toast, Toaster } from 'sonner'
 
 const NewClient = () => {
   const [clientData, setClientData] = useState()
+  const [cleanDataSignal, setCleanDataSignal] = useState(false)
 
   const handleNewClient = async () => {
     try {
       const res = await api.post("client/add", clientData);
       if (res.data.statusCodeValue == 200) {
         toast.success("Cliente agregado exitosamente")
+        setCleanDataSignal(prev => !prev)
       } else if (res.data.statusCodeValue == 409) {
         toast.warning("El cliente ya esta registrado")
       }
 
-      
     } catch (err) {
       console.error(err.response?.data || err.message);
     }
@@ -23,7 +24,7 @@ const NewClient = () => {
 
   return (
     <div className='mx-auto rounded w-[40rem] shadow-custom-external-blur'>
-      <ClientInfoForm setData={setClientData} />
+      <ClientInfoForm setData={setClientData} cleanData={cleanDataSignal} />
       <div className='w-full flex flex-col items-center'>
         <button onClick={handleNewClient} className='btn-custom-confirm p-2'>Agregar cliente</button>
       </div>

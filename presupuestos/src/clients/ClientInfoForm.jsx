@@ -1,7 +1,14 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
-const ClientInfoForm = ({ setData }) => {
+const ClientInfoForm = ({ setData, cleanData }) => {
+
+  useEffect(() => {
+    handleCleanData()
+
+  }, [cleanData])
+  
+
   const clientNameRef = useRef(null);
   const clientCuitRef = useRef(null);
   const clientDniRef = useRef(null);
@@ -23,6 +30,16 @@ const ClientInfoForm = ({ setData }) => {
 
     setData(clientData);
   };
+
+  const handleCleanData = () => {
+      clientNameRef.current.value = ""
+      clientCuitRef.current.value = ""
+      clientDniRef.current.value = ""
+      clientAddressRef.current.value = ""
+      clientCategoryRef.current.value = ""
+      clientPhoneRef.current.value = ""
+      clientEmailRef.current.value = ""
+  }
 
   return (
       <div className="p-[2rem] mx-auto rounded-lg flex flex-col gap-3 font-semibold text-lg">
