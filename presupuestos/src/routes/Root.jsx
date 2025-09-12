@@ -12,6 +12,7 @@ import ListClients from "../clients/ListClients";
 import NewClient from "../clients/NewClient";
 import NewBudget from "../budgets/NewBudget";
 import BudgetMainView from "../budgets/BudgetMainView";
+import ClientDetails from "../clients/ClientDetails";
 
 const Root = () => {
   const [loading, setLoading] = useState(true);
@@ -42,10 +43,17 @@ const Root = () => {
             : <Navigate to="/login" replace />}>
 
           <Route index element={<HomeMenu />} />
+
+          {/* budgets routes */}
           <Route path="budgets" element={<BudgetMainView />} />
           <Route path="new-budget" element={<NewBudget />} />
+
+
+          {/* clients routes */}
           <Route path="clients" element={<ListClients />}/>
           <Route path="new-client" element={<NewClient />} />
+          <Route path="client-details" element={<ClientDetails />} />
+
 
         </Route>
         <Route path="/login" element={<Login />} />
