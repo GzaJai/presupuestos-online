@@ -36,6 +36,15 @@ export const getBudget = async () => {
     }
 }
 
+export const getClientById = async (clientId, setter) => {
+    try {
+        const res = await api.get("client/get/" + clientId);
+        setter(res.data)
+    } catch (err) {
+        console.error(err.response?.data || err.message);
+    }
+}
+
 export const getClientNameById = async (clientId) => {
     try {
         const res = await api.get("client/get/" + clientId);
