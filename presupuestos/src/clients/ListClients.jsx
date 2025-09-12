@@ -39,6 +39,10 @@ const ListClients = () => {
                 key={client.id}
                 className="border rounded-lg max-w-[50rem] mx-auto p-4 px-[4rem] shadow-custom-external-blur bg-white"
             >
+                <Link 
+                    to={"/client-details/"}
+                    state={{ client }}
+                >
                 <h2 className="text-lg text-center font-bold mb-2">{client.name}</h2>
                 <div className="flex flex-col gap-2">
                 <div className="flex justify-between">
@@ -49,23 +53,8 @@ const ListClients = () => {
                     <strong>CUIT:</strong>
                     <p>{client.cuit}</p>
                 </div>
-                <div className="flex justify-between">
-                    <strong>Domicilio:</strong>
-                    <p>{client.address}</p>
                 </div>
-                <div className="flex justify-between">
-                    <strong>Categoría:</strong>
-                    <p>{client.category}</p>
-                </div>
-                <div className="flex justify-between">
-                    <strong>Teléfono:</strong>
-                    <p>{client.phone}</p>
-                </div>
-                <div className="flex justify-between">
-                    <strong>Email:</strong>
-                    <p>{client.email}</p>
-                </div>
-                </div>
+                </Link>
             </div>
             ))
             }
