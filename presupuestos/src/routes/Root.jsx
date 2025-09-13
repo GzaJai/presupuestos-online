@@ -13,6 +13,7 @@ import NewClient from "../clients/NewClient";
 import NewBudget from "../budgets/NewBudget";
 import BudgetMainView from "../budgets/BudgetMainView";
 import ClientDetails from "../clients/ClientDetails";
+import BudgetDetails from "../budgets/BudgetDetails";
 
 const Root = () => {
   const [loading, setLoading] = useState(true);
@@ -47,6 +48,7 @@ const Root = () => {
           {/* budgets routes */}
           <Route path="budgets" element={<BudgetMainView />} />
           <Route path="new-budget" element={<NewBudget />} />
+          <Route path="budget-details" element={<BudgetDetails />} />
 
 
           {/* clients routes */}
