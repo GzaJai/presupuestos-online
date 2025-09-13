@@ -32,6 +32,7 @@ const SelectClientForm = ({ setClientData }) => {
     <div className='flex flex-col p-[1rem] '>
         <h4 className='w-full p-2 mb-[2rem] text-xl font-bold font-mukta'>Selecciona el cliente: </h4>
         <select ref={selectRef} onChange={handleOnChange} className='w-1/2 mx-auto p-2 rounded border-[1px] border-custom-gray'>
+            <option>-</option>
             {!loading &&
                 clients.map((client, i) => (
                     <option key={client.id} value={i}>
