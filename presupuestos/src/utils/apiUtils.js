@@ -53,3 +53,19 @@ export const getClientNameById = async (clientId) => {
         console.error(err.response?.data || err.message);
     }
 }
+
+export const saveBudget = async (budgetData) => {
+    try {
+        const res = await api.post("budget/create", budgetData);    
+    } catch (err) {
+        console.error(err.response?.data || err.message);
+    }
+}
+
+export const formatRow = (row) => {
+    return {
+        description: row.detail,
+        quantity: row.quantity,
+        salePrice: row.price
+    }
+}
