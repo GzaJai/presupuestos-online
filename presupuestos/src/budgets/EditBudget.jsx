@@ -65,6 +65,7 @@ function EditBudget() {
             rowsSetter={setRows}
             total={total}
             totalSetter={setTotal}
+            editing={true}
           />
         )}
       </div>
