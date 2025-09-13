@@ -1,10 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import Row from "./Row";
 
-const Table = ({ rows, rowsSetter, total, totalSetter }) => {
+const Table = ({ rows, rowsSetter, total, totalSetter, budgetData, editing }) => {
   
-
-
   const addRow = () => {    
     rowsSetter((prevRows) => [...prevRows, {id: rows.length}]);
   };
@@ -29,11 +27,9 @@ const Table = ({ rows, rowsSetter, total, totalSetter }) => {
     totalSetter(totalSum);
   };
 
-
   useEffect(() => {
     getTableTotal()
   },[rows])
-
 
   return (
     <>
@@ -58,16 +54,20 @@ const Table = ({ rows, rowsSetter, total, totalSetter }) => {
         saveRow={saveRow}
         removeRow={() => removeRow(row.id)}
         getTableTotal={getTableTotal}
+        budgetData={budgetData}
+        editing={editing}
         />
       ))}
-      <div className="flex justify-center p-6">
-        <button
-          className="btn-custom-confirm p-[.75rem]"
-          onClick={addRow}
-          >
-          Agregar fila
-        </button>
-      </div>
+      {editing &&
+        <div className="flex justify-center p-6">
+          <button
+            className="btn-custom-confirm p-[.75rem]"
+            onClick={addRow}
+            >
+            Agregar fila
+          </button>
+        </div>
+      }
       <div className="w-[90%] mx-auto flex gap-[.2rem] py-[.1rem] text-center justify-end">
         <span className="p-3  font-bold text-2xl">
           Total Presupuesto
