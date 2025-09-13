@@ -55,8 +55,8 @@ export const getClientNameById = async (clientId) => {
 }
 
 export const saveBudget = async (budgetData) => {
-    try {
-        const res = await api.post("budget/create", budgetData);    
+    try {  
+        return api.post("budget/create", budgetData);   
     } catch (err) {
         console.error(err.response?.data || err.message);
     }
