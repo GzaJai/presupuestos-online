@@ -69,3 +69,14 @@ export const formatRow = (row) => {
         salePrice: row.price
     }
 }
+
+export const formatBudgetItem = (item, index) => {
+    return {
+        id: index,
+        detail: item.description,
+        quantity: item.quantity,
+        price: item.salePrice,
+        total: item.quantity * item.salePrice,
+        filled: true
+    };
+}
