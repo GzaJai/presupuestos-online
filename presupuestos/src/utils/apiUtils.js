@@ -62,6 +62,14 @@ export const saveBudget = async (budgetData) => {
     }
 }
 
+export const saveEditedBudget = async (budgetId, editedBudget) => {
+    try {
+        return api.put("budget/edit/" + budgetId, editedBudget);
+    } catch (err) {
+        console.error(err.response?.data || err.message);
+    }
+}
+
 export const formatRow = (row) => {
     return {
         description: row.detail,
