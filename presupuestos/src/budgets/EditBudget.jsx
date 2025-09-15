@@ -1,14 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast, Toaster } from "sonner";
 import Table from "../components/Table";
 import SelectClientForm from "./SelectClientForm";
-import { formatRow, saveBudget } from "../utils/apiUtils";
+import { formatRow, saveBudget, saveEditedBudget } from "../utils/apiUtils";
 
-function EditBudget() {
+function EditBudget({ budgetData, previousRows }) {
   const [rows, setRows] = useState([{ id: 0 }]);
   const [total, setTotal] = useState(0);
   const [clientId, setClientId] = useState({});
   const [done, setDone] = useState(false);
+  
+  useEffect (()=>{
+    if(previousRows) {
+      setRows(previousRows)
+    }
+  },[])
 
   const checkRowsFilled = () => {
     rows.map((row) => {
@@ -32,16 +38,19 @@ function EditBudget() {
 
     const budgetItems = rows.map(formatRow);
     
-    const budgetData = {
+    const newBudgetData = {
       clientId: clientId,
       total: total,
       budgetItems: budgetItems,
     };
 
-    saveBudget(budgetData)
+    if (previousRows) {
+      saveEditedBudget(budgetData.id, newBudgetData)
+      return
+    }
+
+    saveBudget(newBudgetData)
       .then((res) => {
-        console.log(res.data);
-        
         if (res.status == 200) {
           toast.success("Se creó el presupuesto");
         } else {
@@ -66,6 +75,7 @@ function EditBudget() {
             total={total}
             totalSetter={setTotal}
             editing={true}
+            budgetData={budgetData}
           />
         )}
       </div>
