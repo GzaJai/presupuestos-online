@@ -3,12 +3,15 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { api, formatBudgetItem } from '../utils/apiUtils';
 import Table from '../components/Table';
 import { fillForm } from '../utils/pdfUtils';
+import EditBudget from './EditBudget';
 
 const BudgetDetails = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [rows, setRows] = useState([])
     const [total, setTotal] = useState()
+    const [editing, setEditing] = useState(false)
+
     const budget = location.state?.budget;
     const client = location.state?.client;
 
@@ -35,6 +38,16 @@ const BudgetDetails = () => {
       await fillForm(budget, client)
     }
 
+    const handleEditBudget = () => {
+      setEditing(true)
+    }
+
+  if (editing) {
+    return (
+        <EditBudget previousRows={rows} budgetData={budget} />
+    )
+  }
+
   return (
     <div className="w-10/12 mx-auto p-5 pb-10 rounded-lg font-mukta shadow-custom-external-blur border-[1px] border-custom-gray text-black">
         <Table 
@@ -46,9 +59,10 @@ const BudgetDetails = () => {
         <div>
 
         </div>
-        <div className='flex justify-center p-[2rem] gap-[.8rem]'>
-            <button onClick={handleDeleteBudget} className='btn-custom-confirm bg-yui-900 p-2'>Eliminar</button>
-            <button onClick={handlePrintBudget} className='btn-custom-confirm p-2'>Imprimir</button>
+        <div className='flex justify-center p-[2rem] gap-[1.2rem] text-lg'>
+            <button onClick={handleDeleteBudget} className='w-[6rem] btn-custom-confirm bg-yui-900 p-3'>Eliminar</button>
+            <button onClick={handlePrintBudget} className='w-[6rem] btn-custom-confirm p-3'>Imprimir</button>
+            <button onClick={handleEditBudget} className='w-[6rem] btn-custom-confirm p-3'>Editar</button>
         </div>
     </div>
   )
