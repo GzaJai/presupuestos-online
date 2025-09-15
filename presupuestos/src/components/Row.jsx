@@ -11,7 +11,11 @@ const Row = ({ rowId, saveRow, removeRow, getTableTotal, budgetData, editing }) 
     const inputRefProduct = useRef(null)
 
     useEffect(() => {
-        if (budgetData != null) {
+        if (budgetData == null) {
+            return
+        }
+        
+        if (budgetData.items.length > rowId) {
             const rowData = budgetData.items[rowId]
             inputRefQuantity.current.value = rowData.quantity
             inputRefPrice.current.value = rowData.salePrice
