@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { api, formatBudgetItem } from '../utils/apiUtils';
 import Table from '../components/Table';
+import { fillForm } from '../utils/pdfUtils';
 
 const BudgetDetails = () => {
     const location = useLocation();
@@ -9,6 +10,7 @@ const BudgetDetails = () => {
     const [rows, setRows] = useState([])
     const [total, setTotal] = useState()
     const budget = location.state?.budget;
+    const client = location.state?.client;
 
     useEffect(() => {
       setRows(budget.items.map(formatBudgetItem))
@@ -21,12 +23,16 @@ const BudgetDetails = () => {
             if (res.status == 200) {
                navigate(-1)
             } else {
-            toast.warning("No se pudo crear el presupuesto");
+            toast.warning("No se pudo eliminar el presupuesto");
             }  
             })
         } catch (err) {
         console.error(err.response?.data || err.message);
         }
+    }
+
+    const handlePrintBudget = async () => {
+      await fillForm(budget, client)
     }
 
   return (
@@ -37,9 +43,12 @@ const BudgetDetails = () => {
             totalSetter={setTotal}
             budgetData={budget}
         />
-        <div className='flex justify-center p-[2rem]'>
-            <button onClick={handleDeleteBudget} className='btn-custom-confirm bg-yui-900 p-2'>Eliminar presupuesto</button>
+        <div>
 
+        </div>
+        <div className='flex justify-center p-[2rem] gap-[.8rem]'>
+            <button onClick={handleDeleteBudget} className='btn-custom-confirm bg-yui-900 p-2'>Eliminar</button>
+            <button onClick={handlePrintBudget} className='btn-custom-confirm p-2'>Imprimir</button>
         </div>
     </div>
   )
