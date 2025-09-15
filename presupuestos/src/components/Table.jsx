@@ -31,6 +31,10 @@ const Table = ({ rows, rowsSetter, total, totalSetter, budgetData, editing }) =>
     getTableTotal()
   },[rows])
 
+  useEffect(() => {
+    getTableTotal()
+  },[])
+
   return (
     <>
       <p className="text-xl font-medium pb-4">Ingrese los productos del presupuesto</p>
