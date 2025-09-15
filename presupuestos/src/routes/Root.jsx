@@ -14,6 +14,7 @@ import NewBudget from "../budgets/NewBudget";
 import BudgetMainView from "../budgets/BudgetMainView";
 import ClientDetails from "../clients/ClientDetails";
 import BudgetDetails from "../budgets/BudgetDetails";
+import EditBudget from "../budgets/EditBudget";
 
 const Root = () => {
   const [loading, setLoading] = useState(true);
@@ -48,6 +49,7 @@ const Root = () => {
           {/* budgets routes */}
           <Route path="budgets" element={<BudgetMainView />} />
           <Route path="new-budget" element={<NewBudget />} />
+          <Route path="edit-budget" element={<EditBudget />} />
           <Route path="budget-details" element={<BudgetDetails />} />
 
 
