@@ -34,7 +34,6 @@ export async function fillForm(budget, clientData) {
     
     pdfForm.getTextField('business-name').setFontSize(10);
     pdfForm.getTextField('budget-number').setFontSize(10);
-    pdfForm.getTextField('budget-number').setTextAlignment('right');
     pdfForm.getTextField('issued-date').setFontSize(10);
     pdfForm.getTextField('expiration-date').setFontSize(10);
     pdfForm.getTextField('seller-cuit').setFontSize(10);
@@ -56,7 +55,7 @@ export async function fillForm(budget, clientData) {
     pdfForm.getTextField('iva-condition').setText(clientData.iva);
     pdfForm.getTextField('client-address').setText(clientData.address);
     pdfForm.getTextField('total').setText('$' + String(budget.total));
-    pdfForm.getTextField('my-signature').setText('Gonzalo Jaime');
+    pdfForm.getTextField('my-signature').setText('Yui One');
     
     buildRows(budget.items, pdfForm)
     
