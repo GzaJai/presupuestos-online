@@ -52,7 +52,7 @@ export async function fillForm(budget, clientData) {
     pdfForm.getTextField('business-address').setText('Polonio Montenegro 17');
     pdfForm.getTextField('client-cuit').setText(String(clientData.cuit));
     pdfForm.getTextField('client-name').setText(clientData.name);
-    pdfForm.getTextField('iva-condition').setText(clientData.iva);
+    pdfForm.getTextField('iva-condition').setText(clientData.ivaCondition);
     pdfForm.getTextField('client-address').setText(clientData.address);
     pdfForm.getTextField('total').setText('$' + String(budget.total));
     pdfForm.getTextField('my-signature').setText('Yui One');
