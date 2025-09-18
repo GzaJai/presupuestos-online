@@ -20,7 +20,7 @@ const ClientInfoForm = ({ setData, cleanData }) => {
     const clientData = {
       name: clientNameRef.current.value,
       cuit: clientCuitRef.current.value,
-
+      ivaCondition: clientIvaCondition.current.value,
       dni: clientDniRef.current.value,
       address: clientAddressRef.current.value,
       category: clientCategoryRef.current.value,
@@ -67,6 +67,7 @@ const ClientInfoForm = ({ setData, cleanData }) => {
             onChange={handleOnChange}
           />
         </div>
+
          <div className="flex flex-col w-3/4 mx-auto">
           <label htmlFor="client-cuit" className="text-sm font-semibold">
             CUIT del cliente:
@@ -98,7 +99,6 @@ const ClientInfoForm = ({ setData, cleanData }) => {
             ))}
           </select>
         </div>
-
 
         <div className="flex flex-col w-3/4 mx-auto">
           <label htmlFor="client-dni" className="text-sm font-semibold">
