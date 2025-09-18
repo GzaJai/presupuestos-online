@@ -2,10 +2,10 @@ import React from 'react'
 import Header from './Header'
 import { Outlet } from 'react-router-dom'
 
-const AppLayout = () => {
+const AppLayout = ({ userData }) => {
   return (
     <>
-        <Header pageTitle={"Presupuestos"}/>
+        <Header userData={userData} pageTitle={"Presupuestos"}/>
         <Outlet />
     </>
   )
