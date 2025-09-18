@@ -41,7 +41,7 @@ const Root = () => {
         <Route             
           path="/"
           element={user 
-            ? <AppLayout /> 
+            ? <AppLayout userData={user} /> 
             : <Navigate to="/login" replace />}>
 
           <Route index element={<HomeMenu />} />
