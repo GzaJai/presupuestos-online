@@ -9,7 +9,6 @@ const HomeMenu = () => {
         <nav className="flex flex-col p-4 mt-5 space-y-4 items-center justify-center">
           <Link to="/budgets" className="flex items-center justify-center w-2/3 h-[2rem] text-white font-medium bg-yui-900 rounded">Presupuestos</Link>
           <Link to="/clients" className="flex items-center justify-center w-2/3 h-[2rem] text-white font-medium bg-yui-900 rounded">Clientes</Link>
-          <button onClick={() => getBudget()}>Test get budget</button>
         </nav>
     </div>
   )
