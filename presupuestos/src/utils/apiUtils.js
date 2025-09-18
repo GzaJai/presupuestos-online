@@ -1,4 +1,4 @@
-const apiUrl = "http://192.168.100.71:8080/api/v1/presupuestos/"
+const apiUrl = "http://localhost:8080/api/v1/presupuestos/"
 
 import axios from "axios";
 
@@ -6,6 +6,7 @@ export const api = axios.create({
     baseURL: apiUrl,
     withCredentials: true
 })
+
 
 export const login = async (username, password) => {
     try {
