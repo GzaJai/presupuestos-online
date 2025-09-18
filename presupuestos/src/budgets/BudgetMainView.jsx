@@ -7,6 +7,7 @@ import BudgetCard from './BudgetCard'
 const BudgetMainView = () => {
     const [budgets, setBudgets] = useState([])
     const [loading, setLoading] = useState(true)
+    const [noBudgets, setNoBudgets] = useState(true)
     
     useEffect(() => {
         if (budgets.length == 0) {
@@ -17,9 +18,14 @@ const BudgetMainView = () => {
     const getBudgets = async () => {
         try {
             const res = await api.get("budget/all");
-            setLoading(false)
             const data = res.data
-            setBudgets(data)
+            if (data) {
+                setLoading(false)
+                setBudgets(data)
+            }
+            if (data.length > 0) {
+                setNoBudgets(false)
+            }
         } catch (err) {
             console.error(err.response?.data || err.message);
         }
@@ -31,7 +37,10 @@ const BudgetMainView = () => {
     <div className='font-mukta flex flex-col'>
         <h4 className='text-center text-2xl font-black'>MIS PRESUPUESTOS</h4>
         <Link to={"/new-budget"} className="my-[1rem] mx-auto p-2 w-[14rem] text-white text-center font-medium bg-yui-900 rounded" >Nuevo presupuesto</Link>
-        <div className='p-4 space-y-4'>
+        {noBudgets ?
+            <p className='mt-[4rem] font-bold text-center text-2xl'>No hay presupuestos por mostrar</p>
+            :
+            <div className='p-4 space-y-4'>
             <div className='flex justify-between rounded-lg max-w-[50rem] mx-auto p-4 px-[4rem] bg-white font-mukta font-bold text-lg'>
                 <p>N°</p>
                 <p>Cliente</p>
@@ -41,10 +50,11 @@ const BudgetMainView = () => {
             {!loading &&
                 budgets.map((budget) => (
                     <BudgetCard key={budget.id} budget={budget}/>
-                    )
                 )
-            }
-        </div>
+            )
+        }
+        </div>  
+    }
     </div>
   )
 }
