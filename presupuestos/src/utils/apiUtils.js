@@ -11,7 +11,6 @@ export const api = axios.create({
 export const login = async (username, password) => {
     try {
         const res = await api.post("auth/login", {username, password});
-        console.log(res.data);
         return true
     } catch (err) {
         console.error(err.response?.data || err.message);
@@ -89,3 +88,14 @@ export const formatBudgetItem = (item, index) => {
         filled: true
     };
 }
+
+export const ivaConditions = [
+  { value: "RESPONSABLE_INSCRIPTO", label: "Responsable Inscripto" },
+  { value: "MONOTRIBUTO", label: "Monotributista" },
+  { value: "EXENTO", label: "Exento" },
+  { value: "CONSUMIDOR_FINAL", label: "Consumidor Final" },
+  { value: "RESPONSABLE_NO_INSCRIPTO", label: "Responsable No Inscripto" },
+  { value: "MONOTRIBUTO_SOCIAL", label: "Monotributo Social" },
+  { value: "IMPORTADOR_DEL_EXTERIOR", label: "Importador del Exterior" },
+  { value: "SUJETO_NO_CATEGORIZADO", label: "Sujeto no categorizado" }
+];
