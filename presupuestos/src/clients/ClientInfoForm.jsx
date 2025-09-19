@@ -2,11 +2,17 @@ import React from "react";
 import { useRef, useEffect } from "react";
 import { ivaConditions } from "../utils/apiUtils";
 
-const ClientInfoForm = ({ setData, cleanData }) => {
+const ClientInfoForm = ({ setData, cleanData, previousClientData }) => {
 
   useEffect(() => {
     handleCleanData()
   }, [cleanData])
+
+  useEffect(() => {
+    if (previousClientData) {
+      handlePreviosData()
+    }
+  }, [previousClientData])
   
   const clientNameRef = useRef(null);
   const clientCuitRef = useRef(null);
@@ -35,11 +41,23 @@ const ClientInfoForm = ({ setData, cleanData }) => {
   const handleCleanData = () => {
       clientNameRef.current.value = ""
       clientCuitRef.current.value = ""
+      clientIvaCondition.current.value = "-"
       clientDniRef.current.value = ""
       clientAddressRef.current.value = ""
       clientCategoryRef.current.value = ""
       clientPhoneRef.current.value = ""
       clientEmailRef.current.value = ""
+    }
+    
+  const handlePreviosData = () => {
+    clientNameRef.current.value = previousClientData.name
+    clientCuitRef.current.value = previousClientData.cuit
+    clientIvaCondition.current.value = previousClientData.ivaCondition
+    clientDniRef.current.value = previousClientData.dni
+    clientAddressRef.current.value = previousClientData.address
+    clientCategoryRef.current.value = previousClientData.category
+    clientPhoneRef.current.value = previousClientData.phone
+    clientEmailRef.current.value = previousClientData.email
   }
 
   return (

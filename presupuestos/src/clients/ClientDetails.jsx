@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { api } from '../utils/apiUtils';
+import ClientInfoForm from './ClientInfoForm';
+import { toast, Toaster } from 'sonner';
 
 const ClientDetails = () => {
+    const [editing, setEditing] = useState(false)
+    const [editedClient, setEditedClient] = useState(null)
+
     const location = useLocation();
     const client = location.state?.client;
     const navigate = useNavigate();
@@ -16,6 +21,39 @@ const ClientDetails = () => {
         } catch (err) {
       console.error(err.response?.data || err.message);
         }
+    }
+    
+    const handleSaveEditedClient = async () => {
+        if (editedClient == null) {
+            toast.error("No hay cambios")
+            return
+        }
+        try {
+            const res = await api.put("client/edit/" + client.id, editedClient);
+            if (res.status == 200) {    
+                navigate(-1)
+                toast.success("Cliente actualizado")
+            }
+        } catch (err) {
+            toast.warning("No se pudo actualizar el cliente")
+            console.error(err.response?.data || err.message);
+        }
+    }
+
+    const handleEditClient = () => {
+        setEditing(true)
+    }
+
+    if (editing) {
+        return (
+            <div className='mx-auto rounded w-[40rem] shadow-custom-external-blur'>
+                <ClientInfoForm setData={setEditedClient} previousClientData={client} />
+                <div className='flex mt-[2rem] justify-center gap-6'>
+                    <button onClick={() => navigate(-1)} className='p-2 w-1/4 btn-custom-confirm bg-yui-900'>Cancelar</button>
+                    <button onClick={handleSaveEditedClient} className='p-2 w-1/4 btn-custom-confirm'>Guardar</button>
+                </div>
+            </div>
+        )
     }
 
   return (
@@ -50,7 +88,10 @@ const ClientDetails = () => {
                 <strong>Email:</strong>
                 <p>{client.email}</p>
             </div>
-        <button onClick={handleDeleteClient} className='p-2 w-1/3 mt-[2rem] mx-auto rounded bg-yui-900 text-white font-bold cursor-pointer'>Eliminar cliente</button>
+            <div className='flex mt-[2rem] justify-center gap-6'>
+                <button onClick={handleDeleteClient} className='p-2 w-1/4 btn-custom-confirm bg-yui-900'>Eliminar</button>
+                <button onClick={handleEditClient} className='p-2 w-1/4 btn-custom-confirm'>Editar</button>
+            </div>
             </div>
         </div>
     </div>
