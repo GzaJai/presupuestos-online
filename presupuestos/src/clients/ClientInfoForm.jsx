@@ -1,5 +1,6 @@
 import React from "react";
 import { useRef, useEffect } from "react";
+import { ivaConditions } from "../utils/apiUtils";
 
 const ClientInfoForm = ({ setData, cleanData }) => {
 
@@ -40,17 +41,6 @@ const ClientInfoForm = ({ setData, cleanData }) => {
       clientPhoneRef.current.value = ""
       clientEmailRef.current.value = ""
   }
-
- const ivaConditions = [
-  { value: "RESPONSABLE_INSCRIPTO", label: "Responsable Inscripto" },
-  { value: "MONOTRIBUTO", label: "Monotributista" },
-  { value: "EXENTO", label: "Exento" },
-  { value: "CONSUMIDOR_FINAL", label: "Consumidor Final" },
-  { value: "RESPONSABLE_NO_INSCRIPTO", label: "Responsable No Inscripto" },
-  { value: "MONOTRIBUTO_SOCIAL", label: "Monotributo Social" },
-  { value: "IMPORTADOR_DEL_EXTERIOR", label: "Importador del Exterior" },
-  { value: "SUJETO_NO_CATEGORIZADO", label: "Sujeto no categorizado" }
-];
 
   return (
       <div className="p-[2rem] mx-auto rounded-lg flex flex-col gap-3 font-semibold text-lg">
