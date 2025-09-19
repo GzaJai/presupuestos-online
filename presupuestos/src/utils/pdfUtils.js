@@ -1,6 +1,7 @@
 import { PDFDocument } from 'pdf-lib';
 import { getDate, getShortDate, getExpireDate } from './timeUtils';
 import { saveAs } from 'file-saver';
+import { ivaConditions } from './apiUtils';
 
 const getPdfName = () => {
     const date = getDate().toString();
@@ -21,6 +22,10 @@ const formatBudgetNum = (budgetId) => {
 
 
 export async function fillForm(budget, clientData) {    
+
+    const clientIvaCondition = ivaConditions.find(
+    (option) => option.value === clientData.ivaCondition
+    )?.label || null;    
 
     const templateUrl = '../../new-template-form.pdf'
     const existingPdfBytes = await fetch(templateUrl)
@@ -52,7 +57,7 @@ export async function fillForm(budget, clientData) {
     pdfForm.getTextField('business-address').setText('Polonio Montenegro 17');
     pdfForm.getTextField('client-cuit').setText(String(clientData.cuit));
     pdfForm.getTextField('client-name').setText(clientData.name);
-    pdfForm.getTextField('iva-condition').setText(clientData.ivaCondition);
+    pdfForm.getTextField('iva-condition').setText(clientIvaCondition);
     pdfForm.getTextField('client-address').setText(clientData.address);
     pdfForm.getTextField('total').setText('$' + String(budget.total));
     pdfForm.getTextField('my-signature').setText('Yui One');
