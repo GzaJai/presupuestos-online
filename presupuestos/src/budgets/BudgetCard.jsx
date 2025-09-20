@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
-import { getClientById } from "../utils/apiUtils";
 import { Link } from "react-router-dom";
-
 
 function BudgetCard({ budget }) {
   return (
