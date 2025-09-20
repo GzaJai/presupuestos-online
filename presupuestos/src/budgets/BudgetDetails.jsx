@@ -35,7 +35,7 @@ const BudgetDetails = () => {
     }
 
     const handlePrintBudget = async () => {
-      await fillForm(budget, client)
+      await fillForm(budget)
     }
 
     const handleEditBudget = () => {
