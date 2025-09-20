@@ -7,6 +7,7 @@ import { formatRow, saveBudget, saveEditedBudget } from "../utils/apiUtils";
 function EditBudget({ budgetData, previousRows }) {
   const [rows, setRows] = useState([{ id: 0 }]);
   const [total, setTotal] = useState(0);
+  const [clientData, setClientData] = useState();
   const [clientId, setClientId] = useState({});
   const [done, setDone] = useState(false);
   
@@ -37,9 +38,16 @@ function EditBudget({ budgetData, previousRows }) {
   const handleSave = async () => {
 
     const budgetItems = rows.map(formatRow);
+    if (clientData == null || clientData == undefined) {
+      console.log("No hay datos del cliente");
+    }
     
     const newBudgetData = {
-      clientId: clientId,
+      clientId: clientData.id,
+      clientName: clientData.name,
+      clientCuit: clientData.cuit,
+      clientAddress: clientData.address,
+      clientIvaCondition: clientData.ivaCondition,
       total: total,
       budgetItems: budgetItems,
     };
@@ -67,7 +75,7 @@ function EditBudget({ budgetData, previousRows }) {
     <>
       <div className="w-10/12 mx-auto p-5 pb-10 rounded-lg font-mukta shadow-custom-external-blur border-[1px] border-custom-gray text-black">
         {done ? (
-          <SelectClientForm setClientData={setClientId} />
+          <SelectClientForm setClientData={setClientData} />
         ) : (
           <Table
             rows={rows}
