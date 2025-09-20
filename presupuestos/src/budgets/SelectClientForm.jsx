@@ -25,7 +25,7 @@ const SelectClientForm = ({ setClientData }) => {
 
     const handleOnChange = () => {
         setSelectedClient(clients[selectRef.current.value])        
-        setClientData(clients[selectRef.current.value].id)
+        setClientData(clients[selectRef.current.value])
     }
 
   return (
