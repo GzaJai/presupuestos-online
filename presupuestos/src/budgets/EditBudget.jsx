@@ -8,7 +8,6 @@ function EditBudget({ budgetData, previousRows }) {
   const [rows, setRows] = useState([{ id: 0 }]);
   const [total, setTotal] = useState(0);
   const [clientData, setClientData] = useState();
-  const [clientId, setClientId] = useState({});
   const [done, setDone] = useState(false);
   
   useEffect (()=>{
