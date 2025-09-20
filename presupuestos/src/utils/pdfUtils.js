@@ -21,10 +21,9 @@ const formatBudgetNum = (budgetId) => {
 // budget-number | issued-date | expiration-date | seller-cuit | business-name | big-business-name | business-address | client-cuit | client-name | iva-condition | client-address | my-signature | total
 
 
-export async function fillForm(budget, clientData) {    
-
+export async function fillForm(budget) {    
     const clientIvaCondition = ivaConditions.find(
-    (option) => option.value === clientData.ivaCondition
+    (option) => option.value === budget.clientIvaCondition
     )?.label || null;    
 
     const templateUrl = '../../new-template-form.pdf'
@@ -55,10 +54,10 @@ export async function fillForm(budget, clientData) {
     pdfForm.getTextField('expiration-date').setText(getExpireDate(10));
     pdfForm.getTextField('seller-cuit').setText(String(27255869774));
     pdfForm.getTextField('business-address').setText('Polonio Montenegro 17');
-    pdfForm.getTextField('client-cuit').setText(String(clientData.cuit));
-    pdfForm.getTextField('client-name').setText(clientData.name);
+    pdfForm.getTextField('client-cuit').setText(String(budget.clientCuit));
+    pdfForm.getTextField('client-name').setText(budget.clientName);
     pdfForm.getTextField('iva-condition').setText(clientIvaCondition);
-    pdfForm.getTextField('client-address').setText(clientData.address);
+    pdfForm.getTextField('client-address').setText(budget.clientAddress);
     pdfForm.getTextField('total').setText('$' + String(budget.total));
     pdfForm.getTextField('my-signature').setText('Yui One');
     
