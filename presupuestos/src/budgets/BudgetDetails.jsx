@@ -4,6 +4,7 @@ import { api, formatBudgetItem } from '../utils/apiUtils';
 import Table from '../components/Table';
 import { fillForm } from '../utils/pdfUtils';
 import EditBudget from './EditBudget';
+import { useConfirmationModal } from '../components/modal/ModalProvider';
 
 const BudgetDetails = () => {
     const location = useLocation();
@@ -11,6 +12,8 @@ const BudgetDetails = () => {
     const [rows, setRows] = useState([])
     const [total, setTotal] = useState()
     const [editing, setEditing] = useState(false)
+
+    const { showModal } = useConfirmationModal();
 
     const budget = location.state?.budget;
     const client = location.state?.client;
@@ -32,6 +35,14 @@ const BudgetDetails = () => {
         } catch (err) {
         console.error(err.response?.data || err.message);
         }
+    }
+
+    const handleDeleteButton = () => {
+      showModal({
+        title: "Eliminar presupuesto",
+        description: "¿Deseas eliminar este presupuesto? Esta acción no se puede deshacer.",
+        onConfirm: handleDeleteBudget
+      })
     }
 
     const handlePrintBudget = async () => {
@@ -60,7 +71,7 @@ const BudgetDetails = () => {
 
         </div>
         <div className='flex justify-center p-[2rem] gap-[1.2rem] text-lg'>
-            <button onClick={handleDeleteBudget} className='w-[6rem] btn-custom-confirm bg-yui-900 p-3'>Eliminar</button>
+            <button onClick={handleDeleteButton} className='w-[6rem] btn-custom-confirm bg-yui-900 p-3'>Eliminar</button>
             <button onClick={handlePrintBudget} className='w-[6rem] btn-custom-confirm p-3'>Imprimir</button>
             <button onClick={handleEditBudget} className='w-[6rem] btn-custom-confirm p-3'>Editar</button>
         </div>
