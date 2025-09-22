@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { api } from '../utils/apiUtils';
 import ClientInfoForm from './ClientInfoForm';
-import { toast, Toaster } from 'sonner';
+import { toast } from 'sonner';
+import { useConfirmationModal } from '../components/modal/ModalProvider';
 
 const ClientDetails = () => {
     const [editing, setEditing] = useState(false)
     const [editedClient, setEditedClient] = useState(null)
+
+    const { showModal } = useConfirmationModal();
 
     const location = useLocation();
     const client = location.state?.client;
@@ -21,6 +24,14 @@ const ClientDetails = () => {
         } catch (err) {
       console.error(err.response?.data || err.message);
         }
+    }
+
+    const handleDeleteButton = () => {
+        showModal({
+            title: "Eliminar cliente",
+            description: "¿Deseas eliminar este cliente? Esta acción no se puede deshacer.",
+            onConfirm: handleDeleteClient
+        })
     }
     
     const handleSaveEditedClient = async () => {
@@ -89,7 +100,7 @@ const ClientDetails = () => {
                 <p>{client.email}</p>
             </div>
             <div className='flex mt-[2rem] justify-center gap-6'>
-                <button onClick={handleDeleteClient} className='p-2 w-1/4 btn-custom-confirm bg-yui-900'>Eliminar</button>
+                <button onClick={handleDeleteButton} className='p-2 w-1/4 btn-custom-confirm bg-yui-900'>Eliminar</button>
                 <button onClick={handleEditClient} className='p-2 w-1/4 btn-custom-confirm'>Editar</button>
             </div>
             </div>
